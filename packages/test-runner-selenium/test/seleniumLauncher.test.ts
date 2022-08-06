@@ -11,7 +11,7 @@ async function startSeleniumServer() {
   try {
     await selenium.install({
       drivers: {
-        chrome: { version: 'latest' },
+        chrome: { version: '103.0.5060.134' },
         firefox: { version: 'latest' },
       },
     });
@@ -23,7 +23,7 @@ async function startSeleniumServer() {
   try {
     server = await selenium.start({
       drivers: {
-        chrome: { version: 'latest' },
+        chrome: { version: '103.0.5060.134' },
         firefox: { version: 'latest' },
       },
       seleniumArgs: ['--port', '8888'],
