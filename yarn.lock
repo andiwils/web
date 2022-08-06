@@ -7473,15 +7473,15 @@ jstransformer@1.0.0:
     is-promise "^2.0.0"
     promise "^7.0.1"
 
-jszip@^3.6.0:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.9.1.tgz#784e87f328450d1e8151003a9c67733e2b901051"
-  integrity sha512-H9A60xPqJ1CuC4Ka6qxzXZeU8aNmgOeP5IFqwJbQQwtu2EUYxota3LdsiZWplF7Wgd9tkAd0mdu36nceSaPuYw==
+jszip@^3.10.0:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.10.1.tgz#34aee70eb18ea1faec2f589208a157d1feb091c2"
+  integrity sha512-xXDvecyTpGLrqFrvkrUSoxxfJI5AH7U8zxxtVclpsUtMCq4JQ290LY8AW5c7Ggnr/Y/oK+bQMbqK2qmtk3pN4g==
   dependencies:
     lie "~3.3.0"
     pako "~1.0.2"
     readable-stream "~2.3.6"
-    set-immediate-shim "~1.0.1"
+    setimmediate "^1.0.5"
 
 junk@^1.0.1:
   version "1.0.3"
@@ -11334,7 +11334,7 @@ seek-bzip@^1.0.5:
   dependencies:
     commander "^2.8.1"
 
-selenium-standalone@^8.0.4, selenium-standalone@^8.0.9:
+selenium-standalone@^8.0.4:
   version "8.0.9"
   resolved "https://registry.yarnpkg.com/selenium-standalone/-/selenium-standalone-8.0.9.tgz#637becb31a4d4101ffd80a72c5d4053fab90d7d2"
   integrity sha512-Bl5Wbaeu5bKVmpLVATYeRcPsk9Bv3fr1aUvdC39UZjG6R/bem8j8Pj+dwB9F+PsS/owQnKh0BCg1KalZcAImbw==
@@ -11354,14 +11354,34 @@ selenium-standalone@^8.0.4, selenium-standalone@^8.0.9:
     which "^2.0.2"
     yauzl "^2.10.0"
 
-selenium-webdriver@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/selenium-webdriver/-/selenium-webdriver-4.2.0.tgz#d3c9704735c6228e09580eb4613932b30bdb4d27"
-  integrity sha512-gPPXYSz4jJBM2kANRQ9cZW6KFBzR/ptxqGLtyC75eXtdgOsWWRRRyZz5F2pqdnwNmAjrCSFMMXfisJaZeWVejg==
+selenium-standalone@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/selenium-standalone/-/selenium-standalone-8.2.0.tgz#378b9740fe84953083fa9c0b1d8dcbfc3bd8508c"
+  integrity sha512-gRFJm2A91sL0/4PavIsfTVNjyqNjk+zbdJg/zAYgTMjuoWJv+BlYJh+1UbEtyjt4YvZACYif1DFAzFjQapqiOA==
   dependencies:
-    jszip "^3.6.0"
+    commander "^9.0.0"
+    cross-spawn "^7.0.3"
+    debug "^4.3.1"
+    fs-extra "^10.0.0"
+    got "^11.8.2"
+    is-port-reachable "^3.0.0"
+    lodash.mapvalues "^4.6.0"
+    lodash.merge "^4.6.2"
+    minimist "^1.2.5"
+    mkdirp "^1.0.4"
+    progress "2.0.3"
+    tar-stream "2.2.0"
+    which "^2.0.2"
+    yauzl "^2.10.0"
+
+selenium-webdriver@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/selenium-webdriver/-/selenium-webdriver-4.3.1.tgz#5e9c6c4adee65e57776b5bd4c07c59b65b8f056d"
+  integrity sha512-TjH/ls1WKRQoFEHcqtn6UtwcLnA3yvx08v9cSSFYvyhp8hJWRtbe9ae2I8uXPisEZ2EaGKKoxBZ4EHv0BJM15g==
+  dependencies:
+    jszip "^3.10.0"
     tmp "^0.2.1"
-    ws ">=7.4.6"
+    ws ">=8.7.0"
 
 semver-compare@^1.0.0:
   version "1.0.0"
@@ -11479,10 +11499,10 @@ set-blocking@^2.0.0, set-blocking@~2.0.0:
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
   integrity sha1-BF+XgtARrppoA93TgrJDkrPYkPc=
 
-set-immediate-shim@~1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/set-immediate-shim/-/set-immediate-shim-1.0.1.tgz#4b2b1b27eb808a9f8dcc481a58e5e56f599f3f61"
-  integrity sha1-SysbJ+uAip+NzEgaWOXlb1mfP2E=
+setimmediate@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
+  integrity sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==
 
 setprototypeof@1.1.0:
   version "1.1.0"
@@ -13615,10 +13635,15 @@ write-file-atomic@^3.0.0:
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
 
-ws@8.5.0, ws@>=7.4.6:
+ws@8.5.0:
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.5.0.tgz#bfb4be96600757fe5382de12c670dab984a1ed4f"
   integrity sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==
+
+ws@>=8.7.0:
+  version "8.8.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.8.1.tgz#5dbad0feb7ade8ecc99b830c1d77c913d4955ff0"
+  integrity sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==
 
 ws@^7.4.2:
   version "7.5.7"
