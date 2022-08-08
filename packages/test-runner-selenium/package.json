@@ -52,6 +52,7 @@
   "devDependencies": {
     "@types/selenium-standalone": "^7.0.1",
     "@types/selenium-webdriver": "^4.1.1",
+    "chrome-launcher": "^0.15.0",
     "selenium-standalone": "^8.2.0"
   }
 }

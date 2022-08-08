@@ -1,17 +1,29 @@
 import selenium from 'selenium-standalone';
+import { exec } from 'child_process';
+import { promisify } from 'util';
 import { Builder } from 'selenium-webdriver';
 import { Options as ChromeOptions } from 'selenium-webdriver/chrome';
 import { Options as FirefoxOptions } from 'selenium-webdriver/firefox';
+import { Launcher as ChromeLauncher } from 'chrome-launcher';
 import { runIntegrationTests } from '../../../integration/test-runner';
 import { seleniumLauncher } from '../src/seleniumLauncher';
 
 async function startSeleniumServer() {
   let server: selenium.ChildProcess;
 
+  let chromeVersion: string;
+
   try {
+    // Detect installed Chrome version to download matching ChromeDriver.
+    const chrome = ChromeLauncher.getFirstInstallation();
+    const { stdout } = await promisify(exec)(`"${chrome}" --version`);
+
+    const match = stdout.match(/[0-9]+.[0-9]+.[0-9]+.[0-9]+/);
+    chromeVersion = match ? match[0] : 'latest';
+
     await selenium.install({
       drivers: {
-        chrome: { version: '103.0.5060.134' },
+        chrome: { version: chromeVersion },
         firefox: { version: 'latest' },
       },
     });
@@ -23,7 +35,7 @@ async function startSeleniumServer() {
   try {
     server = await selenium.start({
       drivers: {
-        chrome: { version: '103.0.5060.134' },
+        chrome: { version: chromeVersion },
         firefox: { version: 'latest' },
       },
       seleniumArgs: ['--port', '8888'],
