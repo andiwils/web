@@ -1,4 +1,5 @@
 import selenium from 'selenium-standalone';
+import os from 'os';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import { Builder } from 'selenium-webdriver';
@@ -11,15 +12,18 @@ import { seleniumLauncher } from '../src/seleniumLauncher';
 async function startSeleniumServer() {
   let server: selenium.ChildProcess;
 
-  let chromeVersion: string;
+  let chromeVersion = 'latest';
 
   try {
     // Detect installed Chrome version to download matching ChromeDriver.
-    const chrome = ChromeLauncher.getFirstInstallation();
-    const { stdout } = await promisify(exec)(`"${chrome}" --version`);
-
-    const match = stdout.match(/[0-9]+.[0-9]+.[0-9]+.[0-9]+/);
-    chromeVersion = match ? match[0] : 'latest';
+    // This is only possible on Mac OS and Linux, but not on Windows.
+    // See https://bugs.chromium.org/p/chromium/issues/detail?id=158372
+    if (os.platform() !== 'win32') {
+      const chrome = ChromeLauncher.getFirstInstallation();
+      const { stdout } = await promisify(exec)(`"${chrome}" --version`);
+      const match = stdout.match(/[0-9]+.[0-9]+.[0-9]+.[0-9]+/);
+      chromeVersion = match ? match[0] : 'latest';
+    }
 
     await selenium.install({
       drivers: {
